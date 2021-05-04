@@ -8,7 +8,8 @@
     <input v-model="category1" placeholder="Choose category"/>
     <br>
     <h4>Price</h4>
-    <input v-model="price1" placeholder="Enter price"/>
+    <input v-model="price1" placeholder="Price from"/>
+    <input v-model="price1" placeholder="Price to"/>
     <br>
     <h4>Location</h4>
     <input v-model="location1" placeholder="Choose location"/>
