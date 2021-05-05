@@ -26,10 +26,6 @@
               v-on:change="getAdsByCategory()">
             Category
           </v-select>
-<!--          <table>
-            <tr v-for="category in categoryResponse">
-            </tr>
-          </table>-->
           <br>
           <h4>Location</h4>
           <v-select
@@ -39,12 +35,6 @@
               v-on:change="getAdsByLocation()">
             Location
           </v-select>
-<!--          <table>
-            <tr v-for="location in chosenLocationResponse">
-&lt;!&ndash;              <td>{{ location.title }}</td>&ndash;&gt;
-&lt;!&ndash;              <td>{{ location.price }}</td>&ndash;&gt;
-            </tr>
-          </table>-->
           <h4>Name</h4>
           <input v-model="userName" placeholder="Enter name"/>
           <br>
@@ -71,8 +61,6 @@ export default {
       'title': '',
       'description': '',
       'price': '',
-      'category': '',
-      'location1': '',
       'userName': '',
       'phoneNumber': '',
       'eMail': '',
