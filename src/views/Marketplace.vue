@@ -71,9 +71,9 @@ export default {
       // 'Harju maakond': '',
       // 'Hiiu maakond': ''
 
-      'priceFrom':'',
-      'priceTo':'',
-      'priceResults':'',
+      'priceFrom': '',
+      'priceTo': '',
+      'priceResults': '',
     }
   },
 
@@ -88,23 +88,18 @@ export default {
   //         })
   //
   //
-  //
   //   }
   // }
 
-
-
-
-
-  },
   methods: {
-    'getAdsByPrice': function (){
-      this.$http.get('/api/getAdsByPrice/'+this.priceFrom+"/"+this.priceTo)
-      .then(response=>{
-        console.log(response);
-        this.priceResults = response.data;
-      })
+    'getAdsByPrice': function () {
+      this.$http.get('/api/getAdsByPrice/' + this.priceFrom + "/" + this.priceTo)
+          .then(response => {
+            console.log(response);
+            this.priceResults = response.data;
+          })
     }
 
+  }
 }
 </script>
