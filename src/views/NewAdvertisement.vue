@@ -41,8 +41,6 @@
           </v-select>
           <table>
             <tr v-for="location in chosenLocationResponse">
-<!--              <td>{{ location.title }}</td>-->
-<!--              <td>{{ location.price }}</td>-->
             </tr>
           </table>
           <h4>Name</h4>
