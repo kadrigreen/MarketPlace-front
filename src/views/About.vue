@@ -30,7 +30,7 @@
           </v-col>
           <v-btn v-on:click="getAdsByPrice" elevation="2"> Filter</v-btn>
           <br>
-         <table border="2">
+         <table>
             <tr>
               <th>Title</th>
               <th>Price</th>
