@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Marketplace from '../views/Marketplace.vue'
 import NewAdvertisement from '../views/NewAdvertisement.vue'
+import Category from '../views/Category.vue'
 
 
 Vue.use(VueRouter)
@@ -17,6 +18,11 @@ const routes = [
     path: '/marketplace',
     name: 'Marketplace',
     component: Marketplace
+  },
+  {
+    path: '/category',
+    name: 'Category',
+    component: Category
   },
   {
     path: '/newAdvertisement',
