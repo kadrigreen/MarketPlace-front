@@ -19,7 +19,17 @@
           <input v-model="price" placeholder="Enter price"/>
           <br>
           <h4>Category</h4>
-          <input v-model="category" placeholder="Choose category"/>
+          <v-select
+              :items="items2"
+              label="Please select category"
+              v-model = 'selectedCategory'
+              v-on:change="getAdsByCategory()">
+            Category
+          </v-select>
+          <table>
+            <tr v-for="category in categoryResponse">
+            </tr>
+          </table>
           <br>
           <h4>Location</h4>
           <v-select
@@ -31,8 +41,8 @@
           </v-select>
           <table>
             <tr v-for="location in chosenLocationResponse">
-              <td>{{ location.title }}</td>
-              <td>{{ location.price }}</td>
+<!--              <td>{{ location.title }}</td>-->
+<!--              <td>{{ location.price }}</td>-->
             </tr>
           </table>
           <h4>Name</h4>
@@ -67,10 +77,13 @@ export default {
       'phoneNumber': '',
       'eMail': '',
       'advertisement': '',
-      items: ['Harju maakond', 'Tartu maakond', 'Hiiu maakond', 'Ida-Viru maakond', 'Jõgeva maakond', 'Järva maakond', 'Pärnu maakond'],
+      items: ['Harju maakond', 'Hiiu maakond', 'Ida-Viru maakond', 'Jõgeva maakond', 'Järva maakond', 'Lääne maakond','Lääne-Viru maakond', 'Põlva maakond', 'Pärnu maakond','Rapla maakond', 'Saare maakond', 'Tartu maakond','Valga maakond','Viljandi maakond', 'Võru maakond'],
       'chosenLocationResponse': [],
       'chosenLocation': '',
-      'selectedLocation':''
+      'selectedLocation':'',
+      items2: ['Cars', 'Electronics', 'Pets', 'Real estate', 'Clothing and shoes', 'Home', 'Books', 'Construction', 'Leisure', 'Products for children'],
+      'categoryResponse': [],
+      'selectedCategory': ''
     }
   },
   methods: {
@@ -84,7 +97,7 @@ export default {
             title: this.title,
             description: this.description,
             price: this.price,
-            category: this.category,
+            category: this.selectedCategory,
             location: this.chosenLocation,
             username: this.userName,
             phonenumber: this.phoneNumber,
@@ -101,6 +114,13 @@ export default {
           .then(response => {
             console.log(response);
             this.chosenLocationResponse = response.data
+          })
+    },
+    'getAdsByCategory': function (){
+      this.$http.get('/api/getAdsByCategory/' + this.selectedCategory)
+          .then(response => {
+            console.log(response);
+            this.categoryResponse = response.data
           })
     }
   }
