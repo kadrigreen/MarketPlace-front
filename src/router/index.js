@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Marketplace from '../views/Marketplace.vue'
 import NewAdvertisement from '../views/NewAdvertisement.vue'
-
+import Main from "../views/Main.vue";
 
 Vue.use(VueRouter)
 
@@ -22,6 +22,11 @@ const routes = [
     path: '/newAdvertisement',
     name: 'newAdvertisement',
     component: NewAdvertisement
+  },
+  {
+    path: '/main',
+    name: 'main',
+    component: Main
   },
   {
     path: '/about',
