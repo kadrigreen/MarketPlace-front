@@ -20,26 +20,26 @@
     <br>
 
     <h4>Location</h4>
-<!--    <input v-model="location" placeholder="Choose location"/>-->
+    <input v-model="location" placeholder="Choose location"/>
 
-    <select>
-      <option value="Harju maakond">Harju maakond</option>
-      <option value="Hiiu maakond">Hiiu maakond</option>
-      <option value="Ida-Viru maakond">Ida-Viru maakond</option>
-      <option value="Jõgeva maakond">Jõgeva maakond</option>
-      <option value="Järva maakond">Järva maakond</option>
-      <option value="Lääne maakond">Lääne maakond</option>
-      <option value="Lääne-Viru maakond">Lääne-Viru maakond</option>
-      <option value="Ida-Viru maakond">Ida-Viru maakond</option>
-      <option value="Põlva maakond">Põlva maakond</option>
-      <option value="Pärnu maakond">Pärnu maakond</option>
-      <option value="Rapla maakond">Rapla maakond</option>
-      <option value="Saare maakond">Saare maakond</option>
-      <option value="Tartu maakond">Tartu maakond</option>
-      <option value="Valga maakond">Valga maakond</option>
-      <option value="Viljandi maakond">Viljandi maakond</option>
-      <option value="Võru maakond">Võru maakond</option>
-    </select>
+<!--    <select>-->
+<!--      <option value="Harju maakond">Harju maakond</option>-->
+<!--      <option value="Hiiu maakond">Hiiu maakond</option>-->
+<!--      <option value="Ida-Viru maakond">Ida-Viru maakond</option>-->
+<!--      <option value="Jõgeva maakond">Jõgeva maakond</option>-->
+<!--      <option value="Järva maakond">Järva maakond</option>-->
+<!--      <option value="Lääne maakond">Lääne maakond</option>-->
+<!--      <option value="Lääne-Viru maakond">Lääne-Viru maakond</option>-->
+<!--      <option value="Ida-Viru maakond">Ida-Viru maakond</option>-->
+<!--      <option value="Põlva maakond">Põlva maakond</option>-->
+<!--      <option value="Pärnu maakond">Pärnu maakond</option>-->
+<!--      <option value="Rapla maakond">Rapla maakond</option>-->
+<!--      <option value="Saare maakond">Saare maakond</option>-->
+<!--      <option value="Tartu maakond">Tartu maakond</option>-->
+<!--      <option value="Valga maakond">Valga maakond</option>-->
+<!--      <option value="Viljandi maakond">Viljandi maakond</option>-->
+<!--      <option value="Võru maakond">Võru maakond</option>-->
+<!--    </select>-->
 
 
 

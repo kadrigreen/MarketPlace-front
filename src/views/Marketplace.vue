@@ -14,22 +14,19 @@
 
 
     <h4>Location</h4>
-<!--    <input v-model="location1" placeholder="Choose location"/>-->
+    <input v-model="location1" placeholder="Choose location"/>
 
 
-    <Dropdown
-        :options="[{ id: 1, name: 'Harju maakond'}, { id: 2, name: 'Hiiu maakond'}]"
-        v-on:selected="location1"
-        v-on:filter="getAdsByLocation"
-        :disabled="false"
-        name="location"
-        :maxItem="2"
-        placeholder="Please select an option">
-      {{getAds}}
-    </Dropdown>
-
-
-
+<!--    <Dropdown-->
+<!--        :options="[{ id: 1, name: 'Harju maakond'}, { id: 2, name: 'Hiiu maakond'}]"-->
+<!--        v-on:selected="location1"-->
+<!--        v-on:filter="getAdsByLocation"-->
+<!--        :disabled="false"-->
+<!--        name="location"-->
+<!--        :maxItem="2"-->
+<!--        placeholder="Please select an option">-->
+<!--      {{getAds}}-->
+<!--    </Dropdown>-->
 
 
 <!--    <select v-model="location1" name="location">-->
@@ -40,7 +37,7 @@
 
 <!--      <option value="Harju maakond">Harju maakond</option>-->
 <!--      <option value="Hiiu maakond">Hiiu maakond</option>-->
-<!--      <option value="Ida-Viru maakond">Ida-Viru maakond</option>-->
+<!--      <option value="Ida-Viru maakond">Ida-Viru maakond</option>-->nu
 <!--      <option value="Jõgeva maakond">Jõgeva maakond</option>-->
 <!--      <option value="Järva maakond">Järva maakond</option>-->
 <!--      <option value="Lääne maakond">Lääne maakond</option>-->
@@ -69,29 +66,29 @@ export default {
       'category1': '',
       'price1': '',
       'location1': '',
-      'getAds':'',
 
-      'Harju maakond': '',
-      'Hiiu maakond': ''
+      // 'getAds':'',
+      // 'Harju maakond': '',
+      // 'Hiiu maakond': ''
 
 
     }
   },
 
 
-  methods: {
-
-    'getAdsByLocation': function (){
-      this.$http.get('/api/getAdsByLocation/' + this.location1)
-          .then(response => {
-            console.log(response);
-            this.getAds = response.data
-          })
-
-
-
-    }
-  }
+  // methods: {
+  //
+  //   'getAdsByLocation': function (){
+  //     this.$http.get('/api/getAdsByLocation/' + this.location1)
+  //         .then(response => {
+  //           console.log(response);
+  //           this.getAds = response.data
+  //         })
+  //
+  //
+  //
+  //   }
+  // }
 
 
 

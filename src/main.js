@@ -4,6 +4,7 @@ import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import Dropdown from 'vue-simple-search-dropdown'
+import vuetify from './plugins/vuetify'
 
 Vue.use(Dropdown);
 
@@ -12,5 +13,6 @@ Vue.config.productionTip = false
 
 new Vue({
   router,
+  vuetify,
   render: function (h) { return h(App) }
 }).$mount('#app')
