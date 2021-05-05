@@ -8,8 +8,10 @@
     <input v-model="category1" placeholder="Choose category"/>
     <br>
     <h4>Price</h4>
-    <input v-model="price1" placeholder="Price from"/>
-    <input v-model="price1" placeholder="Price to"/>
+    <input v-model="priceFrom" placeholder="Price from"/>
+    <input v-model="priceTo" placeholder="Price to"/>
+    <button v-on:click="getAdsByPrice">Insert</button>
+    {{priceResults}}
     <br>
     <h4>Location</h4>
     <input v-model="location1" placeholder="Choose location"/>
@@ -22,8 +24,24 @@ export default {
     return {
       'category1': '',
       'price1': '',
-      'location1': ''
+      'location1': '',
+      'priceFrom':'',
+      'priceTo':'',
+      'priceResults':'',
     }
+  },
+  methods: {
+    'getAdsByPrice': function (){
+      this.$http.get('/api/getAdsByPrice/'+this.priceFrom+"/"+this.priceTo)
+      .then(response=>{
+        console.log(response);
+        this.priceResults = response.data;
+      })
+    },
+  },
+  mounted() {
+    this.$http.get('/api/getAdsByPrice/'+this.priceFrom+"/"+this.priceTo)
+    .then (response=> this.)
   }
 }
 </script>
