@@ -3,7 +3,8 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Marketplace from '../views/Marketplace.vue'
 import NewAdvertisement from '../views/NewAdvertisement.vue'
-import Main from "../views/Main.vue";
+import Category from '../views/Category.vue'
+
 
 Vue.use(VueRouter)
 
@@ -19,14 +20,14 @@ const routes = [
     component: Marketplace
   },
   {
+    path: '/category',
+    name: 'Category',
+    component: Category
+  },
+  {
     path: '/newAdvertisement',
     name: 'newAdvertisement',
     component: NewAdvertisement
-  },
-  {
-    path: '/main',
-    name: 'main',
-    component: Main
   },
   {
     path: '/about',

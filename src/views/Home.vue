@@ -20,7 +20,9 @@
         <table>
           <tr v-for="location in locationResponse">
             <td>{{location.title}}</td>
+            <td>{{location.description}}</td>
             <td>{{location.price}}</td>
+            <td>{{location.username}}</td>
           </tr>
         </table>
       </v-col>
@@ -31,7 +33,7 @@
 <script>
 export default {
   data: ()=> ({
-    items: ['Harju maakond', 'Tartu maakond', 'Hiiu maakond'],
+    items: ['Harju maakond', 'Hiiu maakond', 'Ida-Viru maakond', 'Jõgeva maakond', 'Järva maakond', 'Lääne maakond','Lääne-Viru maakond', 'Põlva maakond', 'Pärnu maakond','Rapla maakond', 'Saare maakond', 'Tartu maakond','Valga maakond','Viljandi maakond', 'Võru maakond'],
     'locationResponse': [],
     'selectedLocation': ''
   }),
