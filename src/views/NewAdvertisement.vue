@@ -26,10 +26,10 @@
               v-on:change="getAdsByCategory()">
             Category
           </v-select>
-          <table>
+<!--          <table>
             <tr v-for="category in categoryResponse">
             </tr>
-          </table>
+          </table>-->
           <br>
           <h4>Location</h4>
           <v-select
@@ -39,12 +39,12 @@
               v-on:change="getAdsByLocation()">
             Location
           </v-select>
-          <table>
+<!--          <table>
             <tr v-for="location in chosenLocationResponse">
-<!--              <td>{{ location.title }}</td>-->
-<!--              <td>{{ location.price }}</td>-->
+&lt;!&ndash;              <td>{{ location.title }}</td>&ndash;&gt;
+&lt;!&ndash;              <td>{{ location.price }}</td>&ndash;&gt;
             </tr>
-          </table>
+          </table>-->
           <h4>Name</h4>
           <input v-model="userName" placeholder="Enter name"/>
           <br>
