@@ -18,8 +18,10 @@
         <v-tab
             v-for="link in links"
             :key="link"
+
         >
-          {{ link}}
+          {{ link }}
+
         </v-tab>
 
       </v-tabs>
@@ -41,7 +43,17 @@
                 rounded="lg"
                 min-height="70vh"
             >
-              Filter by Price
+              Search
+              <v-select
+                  :items="categories"
+                  label="Select category"
+                  v-model='selectedCategory'>
+              </v-select>
+              <v-select
+                  :items="locations"
+                  label="Select location"
+                  v-model='selectedLocation'>
+              </v-select>
               <v-text-field v-model="priceFrom"
                             label="Price"
                             placeholder="Insert minimum price"
@@ -52,14 +64,8 @@
                             placeholder="Insert maximum price"
                             outlined
               ></v-text-field>
-              Filter by Location
-              <v-select
-                  :items="items"
-                  label="Please select location"
-                  v-model='selectedLocation'
-                  v-on:change="getAdsByLocation()">
-              </v-select>
-              <v-btn v-on:click="getAdsByPrice" elevation="2"> Filter</v-btn>
+
+              <v-btn v-on:click="getAdsBySearch" elevation="2"> Search</v-btn>
               <!--  -->
             </v-sheet>
           </v-col>
@@ -78,36 +84,16 @@
                   <th>Price</th>
                   <th>Location</th>
                 </tr>
-                <tr v-for="price in resultsByPrice">
-                  <td>{{ price.title }}</td>
-                  <td>{{ price.price }}</td>
-                  <td>{{ price.location }}</td>
+                <tr v-for="ads in searchResults">
+                  <td>{{ ads.title }}</td>
+                  <td>{{ ads.price }}</td>
+                  <td>{{ ads.location }}</td>
                 </tr>
               </table>
 
-              <table>
-                <tr v-for="location in locationResponse">
-                  <td>{{location.title}}</td>
-                  <td>{{location.description}}</td>
-                  <td>{{location.price}}</td>
-                  <td>{{location.username}}</td>
-                </tr>
-              </table>
               <!--  -->
             </v-sheet>
           </v-col>
-
-          <!--          <v-col
-                        cols="12"
-                        sm="2"
-                    >
-                      <v-sheet
-                          rounded="lg"
-                          min-height="268"
-                      >
-                        &lt;!&ndash;  &ndash;&gt;
-                      </v-sheet>
-                    </v-col>-->
         </v-row>
       </v-container>
     </v-main>
@@ -116,41 +102,41 @@
 
 <script>
 export default {
-  data: () =>
-      ({
-        items: ['Harju maakond', 'Hiiu maakond', 'Ida-Viru maakond', 'Jõgeva maakond', 'Järva maakond', 'Lääne maakond', 'Lääne-Viru maakond', 'Põlva maakond', 'Pärnu maakond', 'Rapla maakond', 'Saare maakond', 'Tartu maakond', 'Valga maakond', 'Viljandi maakond', 'Võru maakond'],
-        'locationResponse': [],
-        'selectedLocation': '',
-        links: [
-          'MarketPlace',
-          'Add new advertisement',
-          'Profile',
-          'Updates',
-        ],
-      }),
-  return: {
-    'priceFrom': '',
-    'priceTo': '',
-    'priceResults': '',
-    'resultsByPrice': [],
+  data: function () {
+    return {
+      locations: ['Harju county', 'Hiiu county', 'Ida-Viru county', 'Jõgeva county', 'Järva county', 'Lääne county', 'Lääne-Viru county', 'Põlva county', 'Pärnu county', 'Rapla county', 'Saare county', 'Tartu county', 'Valga county', 'Viljandi county', 'Võru county'],
+      categories: ['Cars', 'Electronics', 'Pets', 'Real estate', 'Clothing and shoes', 'Home', 'Books', 'Construction', 'Leisure', 'Products for children'],
+      'selectedLocation': '',
+      'selectedCategory': '',
+      'searchResults': [],
+      'priceFrom': '',
+      'priceTo': '',
+      links: [
+        'MarketPlace',
+        'Add new advertisement',
+        'Profile',
+        'Updates',
+      ],
+    }
   },
 
   methods: {
-    'getAdsByPrice': function () {
-      this.$http.get('/api/getAdsByPrice/' + this.priceFrom + "/" + this.priceTo)
+    'getAdsBySearch': function () {
+      this.$http.get('/api/filterAdsByPriceCategoryLocation/', {
+        params: {
+          a: this.selectedCategory,
+          b: this.selectedLocation,
+          c: this.priceFrom,
+          d: this.priceTo
+
+        }
+      })
           .then(response => {
             console.log(response);
-            this.resultsByPrice = response.data;
-          })
-    },
-    'getAdsByLocation': function () {
-      this.$http.get('/api/getAdsByLocation/' + this.selectedLocation)
-          .then(response => {
-            console.log(response);
-            this.locationResponse = response.data
+            this.searchResults = response.data;
           })
     }
-  },
+  }
 }
 </script>
 
