@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <v-app id="inspire">
-      <v-main class="grey lighten-3">
+      <v-main>
         <v-container>
           <h1>Create new advertisement</h1>
           <br>
@@ -65,7 +65,7 @@ export default {
       'phoneNumber': '',
       'eMail': '',
       'advertisement': '',
-      items: ['Harju maakond', 'Hiiu maakond', 'Ida-Viru maakond', 'Jõgeva maakond', 'Järva maakond', 'Lääne maakond','Lääne-Viru maakond', 'Põlva maakond', 'Pärnu maakond','Rapla maakond', 'Saare maakond', 'Tartu maakond','Valga maakond','Viljandi maakond', 'Võru maakond'],
+      items: ['Harju county', 'Hiiu county', 'Ida-Viru county', 'Jõgeva county', 'Järva county', 'Lääne county','Lääne-Viru county', 'Põlva county', 'Pärnu county','Rapla county', 'Saare county', 'Tartu county','Valga county','Viljandi county', 'Võru county'],
       'chosenLocationResponse': [],
       'chosenLocation': '',
       'selectedLocation':'',
