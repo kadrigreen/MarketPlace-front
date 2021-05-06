@@ -19,10 +19,10 @@
             v-for="link in links"
             :key="link"
         >
-          {{ link }}
+          {{ link}}
         </v-tab>
-      </v-tabs>
 
+      </v-tabs>
       <v-avatar
           class="hidden-sm-and-down"
           color="grey darken-1 shrink"
@@ -122,8 +122,8 @@ export default {
         'locationResponse': [],
         'selectedLocation': '',
         links: [
-          'Dashboard',
-          'Messages',
+          'MarketPlace',
+          'Add new advertisement',
           'Profile',
           'Updates',
         ],
