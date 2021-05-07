@@ -1,15 +1,26 @@
 <template>
   <v-app>
     <v-app-bar app color="white" flat>
+      <div class="d-flex align-center">
+                <v-img
+                  alt="Vuetify Logo"
+                  class="shrink mr-2"
+                  contain
+                  src="https://pic.onlinewebfonts.com/svg/img_544110.png"
+                  transition="scale-transition"
+                  width="80"
+                />
+              </div>
             <v-tabs centered class="ml-9" color="blue lighten-2">
               <v-tab>
                 <router-link to="/marketplace">Marketplace</router-link>
+                <v-icon large color="blue-2">mdi-domain</v-icon>
               </v-tab>
               <v-tab>
                 <router-link to="/addAdvertisement">Add new advertisement</router-link>
+                <v-icon large color="green lighten-2">mdi-arrow-up-bold-box-outline</v-icon>
               </v-tab>
             </v-tabs>
-      <v-avatar class="hidden-sm-and-down" color="blue lighten-2" size="32"></v-avatar>
     </v-app-bar>
 <!--    <v-app-bar-->
 <!--      app-->

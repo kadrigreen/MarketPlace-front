@@ -1,10 +1,10 @@
 <template>
   <v-app id="inspire">
-    <v-main class="grey lighten-3">
+    <v-main class="blue-grey lighten-5">
       <v-container>
         <v-row>
-          <v-col cols="12" sm="14">
-            <v-sheet min-height="80vh" rounded="lg">
+          <v-col cols="12" sm="16">
+<!--            <v-sheet min-height="80vh" rounded="lg">-->
               <h1>Create new advertisement</h1>
               <br>
               <h2>Click here to add a picture</h2>
@@ -47,10 +47,11 @@
               <input v-model="eMail" placeholder="Enter email"/>
               <br>
               <br>
-              <button v-on:click="createAdvertisementButton()">Create Advertisement</button>
+              <v-btn v-on:click="createAdvertisementButton()" elevation="2"> Create Advertisement</v-btn>
+<!--              <button v-on:click="createAdvertisementButton()">Create Advertisement</button>-->
               {{ advertisement }}
               <br>
-            </v-sheet>
+<!--            </v-sheet>-->
           </v-col>
         </v-row>
       </v-container>
