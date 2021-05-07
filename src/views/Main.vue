@@ -21,7 +21,7 @@
 
         >
           {{ link }}
-
+          <router-link to="/addAdvertisement">NEW</router-link>
         </v-tab>
 
       </v-tabs>
@@ -90,9 +90,9 @@
                   <td>{{ ads.location }}</td>
                 </tr>
               </table>
-
               <!--  -->
             </v-sheet>
+
           </v-col>
         </v-row>
       </v-container>
@@ -104,8 +104,8 @@
 export default {
   data: function () {
     return {
-      locations: ['Harju county', 'Hiiu county', 'Ida-Viru county', 'Jõgeva county', 'Järva county', 'Lääne county', 'Lääne-Viru county', 'Põlva county', 'Pärnu county', 'Rapla county', 'Saare county', 'Tartu county', 'Valga county', 'Viljandi county', 'Võru county'],
-      categories: ['Cars', 'Electronics', 'Pets', 'Real estate', 'Clothing and shoes', 'Home', 'Books', 'Construction', 'Leisure', 'Products for children'],
+      locations: ['','Harju county', 'Hiiu county', 'Ida-Viru county', 'Jõgeva county', 'Järva county', 'Lääne county', 'Lääne-Viru county', 'Põlva county', 'Pärnu county', 'Rapla county', 'Saare county', 'Tartu county', 'Valga county', 'Viljandi county', 'Võru county'],
+      categories: ['', 'Cars', 'Electronics', 'Pets', 'Real estate', 'Clothing and shoes', 'Home', 'Books', 'Construction', 'Leisure', 'Products for children'],
       'selectedLocation': '',
       'selectedCategory': '',
       'searchResults': [],
