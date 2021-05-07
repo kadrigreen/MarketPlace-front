@@ -1,49 +1,44 @@
 <template>
-  <v-container fluid>
-    <v-row align="center">
-      <v-col
-          class="d-flex"
-          cols="12"
-          sm="6"
-      >
-        <v-select
-            :items="items"
-            label="Please select location"
-            v-model = 'selectedLocation'
-            v-on:change="getAdsByLocation()">
-            Location
-        </v-select>
-<!--          Valitud: {{selectedLocation}}
-          Vastus: {{locationResponse}}-->
-<!--        <button v-on:click="getAdsByLocation()">Location</button>-->
-<!--        {{location1}}-->
-        <table>
-          <tr v-for="location in locationResponse">
-            <td>{{location.title}}</td>
-            <td>{{location.description}}</td>
-            <td>{{location.price}}</td>
-            <td>{{location.username}}</td>
-          </tr>
-        </table>
-      </v-col>
-    </v-row>
-  </v-container>
+
+  <div id="app">
+    <v-app id="inspire">
+      <v-form>
+        <v-container>
+          <v-row>
+
+            <v-col cols="12" sm="6" md="3">
+              <v-text-field
+                  label="Search"
+                  placeholder="Search ads by keyword here"
+                  outlined
+                  v-model = 'searchedInput'
+                  v-on:change="searchAdsByTitleDescription()">
+
+              ></v-text-field>
+            </v-col>
+
+          </v-row>
+        </v-container>
+      </v-form>
+    </v-app>
+  </div>
+
+
 </template>
 
 <script>
 export default {
   data: ()=> ({
-    items: ['Harju maakond', 'Hiiu maakond', 'Ida-Viru maakond', 'Jõgeva maakond', 'Järva maakond', 'Lääne maakond','Lääne-Viru maakond', 'Põlva maakond', 'Pärnu maakond','Rapla maakond', 'Saare maakond', 'Tartu maakond','Valga maakond','Viljandi maakond', 'Võru maakond'],
-    'locationResponse': [],
-    'selectedLocation': ''
+    'searchedInput': '',
+    'inputResponse': []
   }),
 
   methods: {
-    'getAdsByLocation': function (){
-      this.$http.get('/api/getAdsByLocation/' + this.selectedLocation)
+    'searchAdsByTitleDescription': function (){
+      this.$http.get('/api/searchAdsByTitleDescription/' + this.searchedInput)
           .then(response => {
             console.log(response);
-            this.locationResponse = response.data
+            this.inputResponse = response.data
           })
     }
   }

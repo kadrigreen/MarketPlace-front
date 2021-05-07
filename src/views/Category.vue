@@ -1,49 +1,60 @@
 <template>
-  <v-container fluid>
-    <v-row align="center">
-      <v-col
-          class="d-flex"
-          cols="12"
-          sm="6"
-      >
-        <v-select
-            :items="items"
-            label="Please select category"
-            v-model = 'selectedCategory'
-            v-on:change="getAdsByCategory()">
-            Category
-        </v-select>
-        <table>
-          <tr v-for="category in categoryResponse">
-            <td>{{category.title}}</td>
-            <td>{{category.description}}</td>
-            <td>{{category.price}}</td>
-            <td>{{category.username}}</td>
-          </tr>
-        </table>
-      </v-col>
-    </v-row>
-  </v-container>
+
+  <div id="app">
+    <v-app id="inspire">
+      <v-form>
+        <v-container>
+          <v-row>
+            <v-col cols="12" sm="6" md="3">
+
+              <v-text-field
+                  label="Search"
+                  placeholder="Search ads by keyword here"
+                  outlined
+                  v-model = 'searchedInput'
+                  v-on:change="searchAdsByTitleDescription()">
+              </v-text-field>
+
+              <table>
+              <tr v-for="input in inputResponse">
+                <td>{{ input.title }}</td>
+                <td>{{ input.description }}</td>
+                <td>{{ input.price }}</td>
+                <td>{{ input.category }}</td>
+                <td>{{ input.location }}</td>
+                <td>{{ input.username }}</td>
+                <td>{{ input.phonenumber }}</td>
+                <td>{{ input.email }}</td>
+              </tr>
+              </table>
+
+            </v-col>
+          </v-row>
+        </v-container>
+      </v-form>
+    </v-app>
+  </div>
+
+
 </template>
 
 <script>
 export default {
   data: ()=> ({
-    items: ['Cars', 'Electronics', 'Pets', 'Real estate', 'Clothing and shoes', 'Home', 'Books', 'Construction', 'Leisure', 'Products for children'],
-    'categoryResponse': [],
-    'selectedCategory': ''
+    'searchedInput': '',
+    'inputResponse': []
   }),
 
   methods: {
-    'getAdsByCategory': function (){
-      this.$http.get('/api/getAdsByCategory/' + this.selectedCategory)
+    'searchAdsByTitleDescription': function (){
+      this.$http.get('/api/searchAdsByTitleDescription/' + this.searchedInput)
           .then(response => {
             console.log(response);
-            this.categoryResponse = response.data
+            this.inputResponse = response.data
           })
     }
   }
 
-
 }
 </script>
+
