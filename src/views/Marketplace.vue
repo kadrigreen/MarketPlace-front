@@ -1,75 +1,110 @@
 <template>
-  <div class="home">
-    <v-app id="inspire">
-      <v-main class="grey lighten-3">
-        <v-container>
-          <h1>Marketplace</h1>
-          <br>
-          <h2>Search for an advertisement</h2>
-          <br>
-          <h4>Category</h4>
-          <input v-model="category1" placeholder="Choose category"/>
-          <br>
-          <h4>Price</h4>
-          <input v-model="price1" placeholder="Price from"/>
-          <input v-model="price1" placeholder="Price to"/>
-          <br>
-          <h4>Location</h4>
-          <input v-model="location1" placeholder="Choose location"/>
-          <br>
-          <button v-on:click="getAllAdvertisementsButton()">Search</button>
-          {{ getAllAdvertisements }}
-          <br>
-          <h3>All Advertisement</h3>
-          <table>
-            <tr>
-              <th>Description</th>
-              <th>Price</th>
-              <th>Location</th>
-            </tr>
-            <tr v-for="advertisement in advertisements">
-              <td>{{ advertisement.description }}</td>
-              <br>
-              <td>{{ advertisement.price }}</td>
-              <br>
-              <td>{{ advertisement.location }}</td>
-              <td>{{ advertisement }}</td>
-            </tr>
-          </table>
-          <button v-on:click="getAllAdvertisementsButton()">Search</button>
-        </v-container>
-      </v-main>
-    </v-app>
-  </div>
+  <v-app id="inspire">
+    <v-main class="grey lighten-3">
+      <v-container>
+        <v-row>
+          <v-col
+              cols="12"
+              sm="3"
+          >
+            <v-sheet
+                rounded="lg"
+                min-height="70vh"
+            >
+              Search
+              <v-select
+                  :items="categories"
+                  label="Select category"
+                  v-model='selectedCategory'>
+              </v-select>
+              <v-select
+                  :items="locations"
+                  label="Select location"
+                  v-model='selectedLocation'>
+              </v-select>
+              <v-text-field v-model="priceFrom"
+                            label="Price"
+                            placeholder="Insert minimum price"
+                            outlined
+              ></v-text-field>
+              <v-text-field v-model="priceTo"
+                            label="Price"
+                            placeholder="Insert maximum price"
+                            outlined
+              ></v-text-field>
+
+              <v-btn v-on:click="getAdsBySearch" elevation="2"> Search</v-btn>
+              <!--  -->
+            </v-sheet>
+          </v-col>
+
+          <v-col
+              cols="12"
+              sm="9"
+          >
+            <v-sheet
+                min-height="80vh"
+                rounded="lg"
+            >
+              <table>
+                <tr>
+                  <th>Title</th>
+                  <th>Price</th>
+                  <th>Location</th>
+                </tr>
+                <tr v-for="ads in searchResults">
+                  <td>{{ ads.title }}</td>
+                  <td>{{ ads.price }}</td>
+                  <td>{{ ads.location }}</td>
+                </tr>
+              </table>
+              <!--  -->
+            </v-sheet>
+
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
 export default {
   data: function () {
     return {
-      'category1': '',
-      'price1': '',
-      'location1': '',
-      advertisements: []
+      locations: ['','Harju county', 'Hiiu county', 'Ida-Viru county', 'Jõgeva county', 'Järva county', 'Lääne county', 'Lääne-Viru county', 'Põlva county', 'Pärnu county', 'Rapla county', 'Saare county', 'Tartu county', 'Valga county', 'Viljandi county', 'Võru county'],
+      categories: ['', 'Cars', 'Electronics', 'Pets', 'Real estate', 'Clothing and shoes', 'Home', 'Books', 'Construction', 'Leisure', 'Products for children'],
+      'selectedLocation': '',
+      'selectedCategory': '',
+      'searchResults': [],
+      'priceFrom': '',
+      'priceTo': '',
+      links: [
+        'MarketPlace',
+        'Add new advertisement',
+        'Profile',
+        'Updates',
+      ],
     }
   },
+
   methods: {
-    'getAllAdvertisementsButton': function () {
-      this.$http.put('/api/getAllAdvertisements/', {
-        advertisements: this.advertisements
+    'getAdsBySearch': function () {
+      this.$http.get('/api/filterAdsByPriceCategoryLocation/', {
+        params: {
+          a: this.selectedCategory,
+          b: this.selectedLocation,
+          c: this.priceFrom,
+          d: this.priceTo
+
+        }
       })
           .then(response => {
             console.log(response);
-            this.advertisements = response.data
-          });
-    },
-  },
-
-  mounted() {
-    this.$http.get("/api/getAllAdvertisements/")
-        .then(response => this.advertisements = response.data);
+            this.searchResults = response.data;
+          })
+    }
   }
 }
 </script>
-
 

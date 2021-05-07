@@ -1,24 +1,19 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import Marketplace from '../views/Marketplace.vue'
+import Marketplace2 from '../views/Marketplace2.vue'
 import NewAdvertisement from '../views/NewAdvertisement.vue'
 import Category from '../views/Category.vue'
-import Main from "../views/Main.vue"
+import Marketplace from "../views/Marketplace.vue"
 import addAdvertisement from "../views/addAdvertisement.vue"
 
 Vue.use(VueRouter)
 
 const routes = [
+
   {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/marketplace',
-    name: 'Marketplace',
-    component: Marketplace
+    path: '/marketplace2',
+    name: 'Marketplace2',
+    component: Marketplace2
   },
   {
     path: '/category',
@@ -31,9 +26,9 @@ const routes = [
     component: NewAdvertisement
   },
   {
-    path: '/main',
-    name: 'main',
-    component: Main
+    path: '/marketplace',
+    name: 'marketplace',
+    component: Marketplace
   },
   {
     path: '/addAdvertisement',
