@@ -78,13 +78,7 @@ export default {
       'selectedCategory': '',
       'searchResults': [],
       'priceFrom': '',
-      'priceTo': '',
-      links: [
-        'MarketPlace',
-        'Add new advertisement',
-        'Profile',
-        'Updates',
-      ],
+      'priceTo': ''
     }
   },
 
