@@ -32,6 +32,11 @@
                             placeholder="Insert maximum price"
                             outlined
               ></v-text-field>
+              <v-text-field v-model="searchText"
+                            label="Text"
+                            placeholder="Insert search text"
+                            outlined
+              ></v-text-field>
 
               <v-btn v-on:click="getAdsBySearch" elevation="2"> Search</v-btn>
               <!--  -->
@@ -46,7 +51,7 @@
                 min-height="80vh"
                 rounded="lg"
             >
-              <table>
+              <table  border="1">
                 <tr>
                   <th>Title</th>
                   <th>Price</th>
@@ -79,12 +84,7 @@ export default {
       'searchResults': [],
       'priceFrom': '',
       'priceTo': '',
-      links: [
-        'MarketPlace',
-        'Add new advertisement',
-        'Profile',
-        'Updates',
-      ],
+      'searchText':''
     }
   },
 
@@ -95,7 +95,8 @@ export default {
           a: this.selectedCategory,
           b: this.selectedLocation,
           c: this.priceFrom,
-          d: this.priceTo
+          d: this.priceTo,
+          e: this.searchText,
 
         }
       })

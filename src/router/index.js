@@ -5,6 +5,7 @@ import NewAdvertisement from '../views/NewAdvertisement.vue'
 import Category from '../views/Category.vue'
 import Marketplace from "../views/Marketplace.vue"
 import addAdvertisement from "../views/addAdvertisement.vue"
+import Ads from "../views/Advertisement.vue"
 
 Vue.use(VueRouter)
 
@@ -29,6 +30,11 @@ const routes = [
     path: '/marketplace',
     name: 'marketplace',
     component: Marketplace
+  },
+  {
+    path: '/Advertisement',
+    name: 'advertisement',
+    component: Ads
   },
   {
     path: '/addAdvertisement',
