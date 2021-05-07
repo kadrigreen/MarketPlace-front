@@ -1,16 +1,5 @@
 <template>
   <v-app id="inspire">
-<!--    <v-app-bar app color="white" flat>-->
-<!--      <v-tabs centered class="ml-9" color="blue lighten-2">-->
-<!--        <v-tab>-->
-<!--          <router-link to="/addAdvertisement">Add new advertisement</router-link>-->
-<!--        </v-tab>-->
-<!--        <v-tab>-->
-<!--          <router-link to="/marketplace">Marketplace</router-link>-->
-<!--        </v-tab>-->
-<!--      </v-tabs>-->
-<!--      <v-avatar class="hidden-sm-and-down" color="blue lighten-2" size="32"></v-avatar>-->
-<!--    </v-app-bar>-->
     <v-main class="grey lighten-3">
       <v-container>
         <v-row>
