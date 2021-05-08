@@ -1,6 +1,6 @@
 <template>
   <v-app id="inspire">
-    <v-main class="grey lighten-3">
+    <v-main class="blue-grey lighten-5">
       <v-container>
         <v-row>
           <v-col
