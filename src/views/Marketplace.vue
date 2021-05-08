@@ -58,7 +58,7 @@
                   <th>Location</th>
                 </tr>
                 <tr v-for="ads in searchResults">
-                  <td>{{ ads.title }}</td>
+                  <td><router-link :to="'/Advertisement/'+ads.id">{{ ads.title }}</router-link></td>
                   <td>{{ ads.price }}</td>
                   <td>{{ ads.location }}</td>
                 </tr>
