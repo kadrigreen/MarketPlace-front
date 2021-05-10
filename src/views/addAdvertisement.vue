@@ -77,12 +77,12 @@ export default {
       items2: ['Cars', 'Electronics', 'Pets', 'Real estate', 'Clothing and shoes', 'Home', 'Books', 'Construction', 'Leisure', 'Products for children'],
       'categoryResponse': [],
       'selectedCategory': '',
-      links: [
-        'Marketplace',
-        'Add new advertisement',
-        'Information',
-        'Updates',
-      ],
+      // links: [
+      //   'Marketplace',
+      //   'Add new advertisement',
+      //   'Information',
+      //   'Updates',
+      // ],
     }
   },
   methods: {
