@@ -65,6 +65,16 @@
         </v-row>
       </v-container>
     </v-main>
+    <v-toolbar
+        class="mt-2"
+        color="blue lighten-3"
+        dark
+        flat
+    >
+      <v-toolbar-title class="subheading">
+        A place, where you can make the best deals!
+      </v-toolbar-title>
+    </v-toolbar>
   </v-app>
 </template>
 
