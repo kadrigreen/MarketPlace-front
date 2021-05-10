@@ -105,7 +105,7 @@ export default {
       )
           .then(response => {
             console.log(response);
-            this.advertisement = response.data;
+            this.advertisement = "You have created successfully a new advertisement!" + response.data;
           })
     },
     'getAdsByLocation': function () {

@@ -256,7 +256,7 @@ export default {
 
       'searchedInput': '',
       'inputResponse': [],
-      isHidden: false
+      isHidden: false,
 
 
 
