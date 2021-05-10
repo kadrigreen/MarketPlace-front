@@ -16,20 +16,6 @@
                   v-on:change="searchAdsByTitleDescription(); isHidden=true">
               </v-text-field>
 
-<!--              <table>-->
-<!--                <tr v-for="input in inputResponse">-->
-<!--                  <td>{{ input.title }}</td>-->
-<!--                  <td>{{ input.description }}</td>-->
-<!--                  <td>{{ input.price }}</td>-->
-<!--                  <td>{{ input.category }}</td>-->
-<!--                  <td>{{ input.location }}</td>-->
-<!--                  <td>{{ input.username }}</td>-->
-<!--                  <td>{{ input.phonenumber }}</td>-->
-<!--                  <td>{{ input.email }}</td>-->
-<!--                </tr>-->
-<!--              </table>-->
-
-
               <!--            Search bar      V-card-->
               <v-card v-for="input in inputResponse"
                       :loading="loading"
@@ -49,7 +35,7 @@
                     src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
                 ></v-img>
 
-                <v-card-title>{{input.title}}</v-card-title>
+                <v-card-title><router-link :to="'/Advertisement/'+input.id">{{ input.title }}</router-link></v-card-title>
 
                 <v-card-text>
                   <v-row
@@ -88,20 +74,9 @@
       <!--                Search bar-->
 
 
-
-      <v-container>
-
-        <h2>Advanced search</h2>
-      </v-container>
-
-
-
-
-
-
-
       <v-container
           v-if="!isHidden">
+        <h2>Advanced search</h2>
         <v-row>
           <v-col
               cols="12"
@@ -156,7 +131,7 @@
             >
 
 
-<!--                        4 Search  V-card-->
+<!--                        5 Search  V-card-->
               <v-card v-for="ads in searchResults"
                   :loading="loading"
                   class="mx-auto my-12"
@@ -175,7 +150,7 @@
                     src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
                 ></v-img>
 
-                <v-card-title>{{ ads.title }}</v-card-title>
+                <v-card-title><router-link :to="'/Advertisement/'+ads.id">{{ ads.title }}</router-link></v-card-title>
 
                 <v-card-text>
                   <v-row
@@ -205,20 +180,7 @@
                   </v-btn>
                 </v-card-actions>
               </v-card>
-<!--                        4 Search V-card-->
-
-              <table  border="1">
-                <tr>
-                  <th>Title</th>
-                  <th>Price</th>
-                  <th>Location</th>
-                </tr>
-                <tr v-for="ads in searchResults">
-                  <td><router-link :to="'/Advertisement/'+ads.id">{{ ads.title }}</router-link></td>
-                  <td>{{ ads.price }}</td>
-                  <td>{{ ads.location }}</td>
-                </tr>
-              </table>
+<!--                        5 Search V-card-->
 
               <!--  -->
             </v-sheet>
@@ -252,13 +214,9 @@ export default {
       'priceFrom': '',
       'priceTo': '',
 
-
-
       'searchedInput': '',
       'inputResponse': [],
       isHidden: false,
-
-
 
       'searchText':''
 
