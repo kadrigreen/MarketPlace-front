@@ -48,7 +48,6 @@
                     {{ input.price }}€ • {{ input.location }}
                   </div>
 
-                  <div> {{ input.description }}</div>
                 </v-card-text>
 
                 <v-divider class="mx-4"></v-divider>
@@ -56,14 +55,23 @@
                 <v-card-title> Contact: {{ input.username }} </v-card-title>
 
                 <v-card-actions>
-                  <v-btn
-                      color="deep-purple lighten-2"
-                      text
-                      @click="contact"
+                  <v-tooltip
+                      v-model="show"
+                      top
                   >
-                    Contact seller
-                  </v-btn>
+                    <template v-slot:activator="{ on, attrs }">
+                      <v-btn
+                          color="deep-purple lighten-2"
+                          v-bind="attrs"
+                          v-on="on"
+                      >
+                        Contact seller
+                      </v-btn>
+                    </template>
+                    <span> Phone: {{ input.phonenumber }}, Email: {{ input.email }} </span>
+                  </v-tooltip>
                 </v-card-actions>
+
               </v-card>
               <!--        Search bar    V-card-->
 
@@ -73,10 +81,20 @@
       </v-form>
       <!--                Search bar-->
 
-
       <v-container
           v-if="!isHidden">
-        <h2>Advanced search</h2>
+
+        <h2>
+          Advanced search
+        </h2>
+
+        <v-row
+            align="center"
+            class="mx-0"
+            Advanced search
+        >
+        </v-row>
+
         <v-row>
           <v-col
               cols="12"
@@ -130,7 +148,6 @@
                 rounded="lg"
             >
 
-
 <!--                        5 Search  V-card-->
               <v-card v-for="ads in searchResults"
                   :loading="loading"
@@ -163,7 +180,6 @@
                     {{ ads.price }}€ • {{ ads.location }}
                   </div>
 
-                  <div> {{ ads.description }}</div>
                 </v-card-text>
 
                 <v-divider class="mx-4"></v-divider>
@@ -171,14 +187,23 @@
                 <v-card-title> Contact: {{ ads.username }} </v-card-title>
 
                 <v-card-actions>
-                  <v-btn
-                      color="deep-purple lighten-2"
-                      text
-                      @click="contact"
+                  <v-tooltip
+                      v-model="show"
+                      top
                   >
-                    Contact seller
-                  </v-btn>
+                    <template v-slot:activator="{ on, attrs }">
+                      <v-btn
+                          color="deep-purple lighten-2"
+                          v-bind="attrs"
+                          v-on="on"
+                      >
+                        Contact seller
+                      </v-btn>
+                    </template>
+                    <span> Phone: {{ ads.phonenumber }}, Email: {{ ads.email }} </span>
+                  </v-tooltip>
                 </v-card-actions>
+
               </v-card>
 <!--                        5 Search V-card-->
 
@@ -253,4 +278,6 @@ export default {
   }
 }
 </script>
+
+
 
