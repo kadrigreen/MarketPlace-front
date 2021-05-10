@@ -5,8 +5,64 @@
         <v-row>
           <v-col cols="12" sm="14">
             <v-sheet min-height="80vh" rounded="lg">
-              <h1> Title </h1>
-              <br>
+              <v-card
+                      :loading="loading"
+                      class="mx-auto my-12"
+                      max-width="674"
+              >
+                <template slot="progress">
+                  <v-progress-linear
+                      color="deep-purple"
+                      height="10"
+                      indeterminate
+                  ></v-progress-linear>
+                </template>
+
+                <v-img
+                    height="350"
+                    src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+                ></v-img>
+
+                <v-card-title>{{ advertisement.title }}</v-card-title>
+
+                <v-card-text>
+                  <v-row
+                      align="center"
+                      class="mx-0"
+                  >
+                  </v-row>
+
+                  <div class="my-4 subtitle-1">
+                    Price: {{ advertisement.price }}€
+                    <br>
+                    Location: {{ advertisement.location }}
+                  </div>
+
+                  <div> Description:
+                    <br>
+                    {{ advertisement.description }}</div>
+                </v-card-text>
+
+                <v-divider class="mx-4"></v-divider>
+
+                <v-card-title> Contact seller </v-card-title>
+                  <v-card-text>
+                    <v-row
+                        align="center"
+                        class="mx-0"
+                    >
+                    </v-row>
+                    <div class="my-4 subtitle-1">
+                      Name: {{ advertisement.username }}
+                    </div>
+
+                    <div class="my-4 subtitle-1">
+                      Phone number: {{ advertisement.phonenumber }}
+                      <br>
+                      Email: {{ advertisement.email }}
+                    </div>
+                  </v-card-text>
+              </v-card>
 
 
             </v-sheet>
