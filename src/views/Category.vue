@@ -2,6 +2,7 @@
 
   <div id="app">
     <v-app id="inspire">
+
       <v-form>
         <v-container>
           <v-row>
@@ -32,6 +33,8 @@
           </v-row>
         </v-container>
       </v-form>
+
+
     </v-app>
   </div>
 
