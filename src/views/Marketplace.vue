@@ -134,6 +134,11 @@
                             placeholder="Insert maximum price"
                             outlined
               ></v-text-field>
+              <v-text-field v-model="searchText"
+                            label="Text"
+                            placeholder="Insert search text"
+                            outlined
+              ></v-text-field>
 
               <v-btn v-on:click="getAdsBySearch" elevation="4" color="#00BCD4" block  > Search</v-btn>
 
@@ -149,6 +154,7 @@
                 min-height="55vh"
                 rounded="lg"
             >
+
 
 <!--                        4 Search  V-card-->
               <v-card v-for="ads in searchResults"
@@ -200,6 +206,20 @@
                 </v-card-actions>
               </v-card>
 <!--                        4 Search V-card-->
+
+              <table  border="1">
+                <tr>
+                  <th>Title</th>
+                  <th>Price</th>
+                  <th>Location</th>
+                </tr>
+                <tr v-for="ads in searchResults">
+                  <td><router-link :to="'/Advertisement/'+ads.id">{{ ads.title }}</router-link></td>
+                  <td>{{ ads.price }}</td>
+                  <td>{{ ads.location }}</td>
+                </tr>
+              </table>
+
               <!--  -->
             </v-sheet>
 
@@ -207,6 +227,16 @@
         </v-row>
       </v-container>
     </v-main>
+    <v-toolbar
+        class="mt-2"
+        color="blue lighten-3"
+        dark
+        flat
+    >
+      <v-toolbar-title class="subheading">
+        A place, where you can make the best deals!
+      </v-toolbar-title>
+    </v-toolbar>
   </v-app>
 </template>
 
@@ -223,10 +253,14 @@ export default {
       'priceTo': '',
 
 
+
       'searchedInput': '',
       'inputResponse': [],
       isHidden: false
 
+
+
+      'searchText':''
 
     }
   },
@@ -238,7 +272,8 @@ export default {
           a: this.selectedCategory,
           b: this.selectedLocation,
           c: this.priceFrom,
-          d: this.priceTo
+          d: this.priceTo,
+          e: this.searchText,
 
         }
       })
