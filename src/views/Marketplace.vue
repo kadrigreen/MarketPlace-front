@@ -1,6 +1,6 @@
 <template>
   <v-app id="inspire">
-    <v-main class="blue-grey lighten-5">
+    <v-main class="grey lighten-3">
       <v-container>
         <v-row>
           <v-col
@@ -32,6 +32,11 @@
                             placeholder="Insert maximum price"
                             outlined
               ></v-text-field>
+              <v-text-field v-model="searchText"
+                            label="Text"
+                            placeholder="Insert search text"
+                            outlined
+              ></v-text-field>
 
               <v-btn v-on:click="getAdsBySearch" elevation="2"> Search</v-btn>
               <!--  -->
@@ -46,14 +51,14 @@
                 min-height="80vh"
                 rounded="lg"
             >
-              <table>
+              <table  border="1">
                 <tr>
                   <th>Title</th>
                   <th>Price</th>
                   <th>Location</th>
                 </tr>
                 <tr v-for="ads in searchResults">
-                  <td>{{ ads.title }}</td>
+                  <td><router-link :to="'/Advertisement/'+ads.id">{{ ads.title }}</router-link></td>
                   <td>{{ ads.price }}</td>
                   <td>{{ ads.location }}</td>
                 </tr>
@@ -79,12 +84,7 @@ export default {
       'searchResults': [],
       'priceFrom': '',
       'priceTo': '',
-      links: [
-        'MarketPlace',
-        'Add new advertisement',
-        'Profile',
-        'Updates',
-      ],
+      'searchText':''
     }
   },
 
@@ -95,7 +95,8 @@ export default {
           a: this.selectedCategory,
           b: this.selectedLocation,
           c: this.priceFrom,
-          d: this.priceTo
+          d: this.priceTo,
+          e: this.searchText,
 
         }
       })
