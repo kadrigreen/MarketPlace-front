@@ -11,16 +11,23 @@
               <button v-on:click="addPictureButton()">Add picture</button>
               <br>
               <br>
-              <h4>Title</h4>
-              <input v-model="title" placeholder="Enter title"/>
-              <br>
-              <h4>Description</h4>
-              <input v-model="description" placeholder="Enter description"/>
-              <br>
-              <h4>Price</h4>
-              <input v-model="price" placeholder="Enter price"/>
-              <br>
-              <h4>Category</h4>
+              <h3>Title</h3>
+            <v-text-field v-model="title"
+                          label="Insert title"
+                          outlined
+            ></v-text-field>
+              <h3>Description</h3>
+            <v-textarea
+                outlined
+                name="input-7-4"
+                label="Insert description"
+            ></v-textarea>
+              <h3>Price</h3>
+            <v-text-field v-model="price"
+                          label="Insert price"
+                          outlined
+            ></v-text-field>
+              <h3>Category</h3>
               <v-select
                   :items="items2"
                   label="Please select category"
@@ -29,7 +36,7 @@
                 Category
               </v-select>
               <br>
-              <h4>Location</h4>
+              <h3>Location</h3>
               <v-select
                   :items="items"
                   label="Please select location"
@@ -37,17 +44,24 @@
                   v-on:change="getAdsByLocation()">
                 Location
               </v-select>
-              <h4>Name</h4>
-              <input v-model="userName" placeholder="Enter name"/>
+              <h3>Name</h3>
+            <v-text-field v-model="userName"
+                          label="Insert name"
+                          outlined
+            ></v-text-field>
+              <h3>Phone number</h3>
+            <v-text-field v-model="phoneNumber"
+                          label="Insert phone number"
+                          outlined
+            ></v-text-field>
+              <h3>eMail</h3>
+            <v-text-field v-model="eMail"
+                          label="Insert eMail"
+                          outlined
+            ></v-text-field>
               <br>
-              <h4>Phone number</h4>
-              <input v-model="phoneNumber" placeholder="Enter number"/>
-              <br>
-              <h4>eMail</h4>
-              <input v-model="eMail" placeholder="Enter email"/>
-              <br>
-              <br>
-              <v-btn v-on:click="createAdvertisementButton()" elevation="2"> Create Advertisement</v-btn>
+            <v-btn v-on:click="createAdvertisementButton()" elevation="4" color="#00BCD4" block  >Create advertisement</v-btn>
+<!--              <v-btn v-on:click="createAdvertisementButton()" elevation="2"> Create Advertisement</v-btn>-->
 <!--              <button v-on:click="createAdvertisementButton()">Create Advertisement</button>-->
               {{ advertisement }}
               <br>
