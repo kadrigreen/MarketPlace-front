@@ -1,7 +1,107 @@
 <template>
   <v-app id="inspire">
     <v-main class="blue-grey lighten-5">
+
+      <!--                Search bar-->
+      <v-form>
+        <v-container>
+          <v-row>
+            <v-col cols="12" sm="6" md="12">
+
+              <v-text-field
+                  label="Search"
+                  placeholder="Search ads by keyword here"
+                  outlined color="black" background-color="white"
+                  v-model='searchedInput'
+                  v-on:change="searchAdsByTitleDescription(); isHidden=true">
+              </v-text-field>
+
+<!--              <table>-->
+<!--                <tr v-for="input in inputResponse">-->
+<!--                  <td>{{ input.title }}</td>-->
+<!--                  <td>{{ input.description }}</td>-->
+<!--                  <td>{{ input.price }}</td>-->
+<!--                  <td>{{ input.category }}</td>-->
+<!--                  <td>{{ input.location }}</td>-->
+<!--                  <td>{{ input.username }}</td>-->
+<!--                  <td>{{ input.phonenumber }}</td>-->
+<!--                  <td>{{ input.email }}</td>-->
+<!--                </tr>-->
+<!--              </table>-->
+
+
+              <!--            Search bar      V-card-->
+              <v-card v-for="input in inputResponse"
+                      :loading="loading"
+                      class="mx-auto my-12"
+                      max-width="374"
+              >
+                <template slot="progress">
+                  <v-progress-linear
+                      color="deep-purple"
+                      height="10"
+                      indeterminate
+                  ></v-progress-linear>
+                </template>
+
+                <v-img
+                    height="250"
+                    src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+                ></v-img>
+
+                <v-card-title>{{input.title}}</v-card-title>
+
+                <v-card-text>
+                  <v-row
+                      align="center"
+                      class="mx-0"
+                  >
+                  </v-row>
+
+                  <div class="my-4 subtitle-1">
+                    {{ input.price }}€ • {{ input.location }}
+                  </div>
+
+                  <div> {{ input.description }}</div>
+                </v-card-text>
+
+                <v-divider class="mx-4"></v-divider>
+
+                <v-card-title> Contact: {{ input.username }} </v-card-title>
+
+                <v-card-actions>
+                  <v-btn
+                      color="deep-purple lighten-2"
+                      text
+                      @click="contact"
+                  >
+                    Contact seller
+                  </v-btn>
+                </v-card-actions>
+              </v-card>
+              <!--        Search bar    V-card-->
+
+            </v-col>
+          </v-row>
+        </v-container>
+      </v-form>
+      <!--                Search bar-->
+
+
+
       <v-container>
+
+        <h2>Advanced search</h2>
+      </v-container>
+
+
+
+
+
+
+
+      <v-container
+          v-if="!isHidden">
         <v-row>
           <v-col
               cols="12"
@@ -9,17 +109,19 @@
           >
             <v-sheet
                 rounded="lg"
-                min-height="70vh"
+                min-height="55vh"
             >
-              Search
               <v-select
                   :items="categories"
                   label="Select category"
+                  height="55"
+                  outlined
                   v-model='selectedCategory'>
               </v-select>
               <v-select
                   :items="locations"
                   label="Select location"
+                  outlined
                   v-model='selectedLocation'>
               </v-select>
               <v-text-field v-model="priceFrom"
@@ -38,19 +140,73 @@
                             outlined
               ></v-text-field>
 
-              <v-btn v-on:click="getAdsBySearch" elevation="2"> Search</v-btn>
+              <v-btn v-on:click="getAdsBySearch" elevation="4" color="#00BCD4" block  > Search</v-btn>
+
               <!--  -->
             </v-sheet>
           </v-col>
 
           <v-col
-              cols="12"
+              cols="18"
               sm="9"
           >
             <v-sheet
-                min-height="80vh"
+                min-height="55vh"
                 rounded="lg"
             >
+
+
+<!--                        4 Search  V-card-->
+              <v-card v-for="ads in searchResults"
+                  :loading="loading"
+                  class="mx-auto my-12"
+                  max-width="374"
+              >
+                <template slot="progress">
+                  <v-progress-linear
+                      color="deep-purple"
+                      height="10"
+                      indeterminate
+                  ></v-progress-linear>
+                </template>
+
+                <v-img
+                    height="250"
+                    src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+                ></v-img>
+
+                <v-card-title>{{ ads.title }}</v-card-title>
+
+                <v-card-text>
+                  <v-row
+                      align="center"
+                      class="mx-0"
+                  >
+                  </v-row>
+
+                  <div class="my-4 subtitle-1">
+                    {{ ads.price }}€ • {{ ads.location }}
+                  </div>
+
+                  <div> {{ ads.description }}</div>
+                </v-card-text>
+
+                <v-divider class="mx-4"></v-divider>
+
+                <v-card-title> Contact: {{ ads.username }} </v-card-title>
+
+                <v-card-actions>
+                  <v-btn
+                      color="deep-purple lighten-2"
+                      text
+                      @click="contact"
+                  >
+                    Contact seller
+                  </v-btn>
+                </v-card-actions>
+              </v-card>
+<!--                        4 Search V-card-->
+
               <table  border="1">
                 <tr>
                   <th>Title</th>
@@ -63,6 +219,7 @@
                   <td>{{ ads.location }}</td>
                 </tr>
               </table>
+
               <!--  -->
             </v-sheet>
 
@@ -87,14 +244,24 @@
 export default {
   data: function () {
     return {
-      locations: ['','Harju county', 'Hiiu county', 'Ida-Viru county', 'Jõgeva county', 'Järva county', 'Lääne county', 'Lääne-Viru county', 'Põlva county', 'Pärnu county', 'Rapla county', 'Saare county', 'Tartu county', 'Valga county', 'Viljandi county', 'Võru county'],
+      locations: ['', 'Harju county', 'Hiiu county', 'Ida-Viru county', 'Jõgeva county', 'Järva county', 'Lääne county', 'Lääne-Viru county', 'Põlva county', 'Pärnu county', 'Rapla county', 'Saare county', 'Tartu county', 'Valga county', 'Viljandi county', 'Võru county'],
       categories: ['', 'Cars', 'Electronics', 'Pets', 'Real estate', 'Clothing and shoes', 'Home', 'Books', 'Construction', 'Leisure', 'Products for children'],
       'selectedLocation': '',
       'selectedCategory': '',
       'searchResults': [],
       'priceFrom': '',
       'priceTo': '',
+
+
+
+      'searchedInput': '',
+      'inputResponse': [],
+      isHidden: false
+
+
+
       'searchText':''
+
     }
   },
 
@@ -114,7 +281,17 @@ export default {
             console.log(response);
             this.searchResults = response.data;
           })
+    },
+
+    'searchAdsByTitleDescription': function () {
+      this.$http.get('/api/searchAdsByTitleDescription/' + this.searchedInput)
+          .then(response => {
+            console.log(response);
+            this.inputResponse = response.data
+          })
     }
+
+
   }
 }
 </script>
