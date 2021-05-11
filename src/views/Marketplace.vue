@@ -133,6 +133,16 @@
                             outlined
               ></v-text-field>
 
+
+              <v-select
+                  :items="sorting"
+                  label="Sort By"
+                  outlined
+                  v-model='selectedOption'>
+              </v-select>
+
+
+
               <v-btn v-on:click="getAdsBySearch" elevation="4" color="#00BCD4" block  > Search</v-btn>
 
               <!--  -->
@@ -147,6 +157,7 @@
                 min-height="55vh"
                 rounded="lg"
             >
+
 
 <!--                        5 Search  V-card-->
               <v-card v-for="ads in searchResults"
@@ -243,13 +254,37 @@ export default {
       'inputResponse': [],
       isHidden: false,
 
-      'searchText':''
+      'searchText':'',
+
+
+      sorting: ['', 'Price: lowest first', 'Price: highest first', 'Date added: newest', 'Date added: oldest'],
+      'selectedOption': '',
+
 
     }
   },
 
   methods: {
     'getAdsBySearch': function () {
+      let orderByColumn = ""
+      let orderByDirection = "";
+      if(this.selectedOption == 'Price: lowest first'){
+        orderByColumn = 'price'
+        orderByDirection = 'asc'
+      }
+      if(this.selectedOption == 'Price: highest first'){
+        orderByColumn = 'price'
+        orderByDirection = 'desc'
+      }
+      if(this.selectedOption == 'Date added: newest'){
+        orderByColumn = 'time'
+        orderByDirection = 'asc'
+      }
+      if(this.selectedOption == 'Date added: oldest'){
+        orderByColumn = 'time'
+        orderByDirection = 'desc'
+      }
+
       this.$http.get('/api/filterAdsByPriceCategoryLocation/', {
         params: {
           a: this.selectedCategory,
@@ -257,6 +292,8 @@ export default {
           c: this.priceFrom,
           d: this.priceTo,
           e: this.searchText,
+          f: orderByColumn,
+          g: orderByDirection
 
         }
       })
@@ -272,7 +309,7 @@ export default {
             console.log(response);
             this.inputResponse = response.data
           })
-    }
+    },
 
 
   }
