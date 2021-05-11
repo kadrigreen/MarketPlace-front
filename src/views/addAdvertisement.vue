@@ -17,7 +17,7 @@
                           outlined
             ></v-text-field>
               <h3>Description</h3>
-            <v-textarea
+            <v-textarea v-model="description"
                 outlined
                 name="input-7-4"
                 label="Insert description"
