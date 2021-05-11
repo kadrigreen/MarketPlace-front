@@ -177,6 +177,8 @@
                   </v-row>
 
                   <div class="my-4 subtitle-1">
+                    {{new Date}}
+                    <br>
                     {{ ads.price }}€ • {{ ads.location }}
                   </div>
 
@@ -238,6 +240,7 @@ export default {
       'searchResults': [],
       'priceFrom': '',
       'priceTo': '',
+      'date':'',
 
       'searchedInput': '',
       'inputResponse': [],
