@@ -6,9 +6,9 @@
           <v-col cols="12" sm="14">
             <v-sheet min-height="80vh" rounded="lg">
               <v-card
-                      :loading="loading"
-                      class="mx-auto my-12"
-                      max-width="674"
+                  :loading="loading"
+                  class="mx-auto my-12"
+                  max-width="674"
               >
                 <template slot="progress">
                   <v-progress-linear
@@ -33,37 +33,39 @@
                   </v-row>
 
                   <div class="my-4 subtitle-1">
-                    Price: {{ advertisement.price }}€
+                    Time: {{ new Date() }}
+                    <br>
+                    Price: {{ advertisement.price }}
                     <br>
                     Location: {{ advertisement.location }}
                   </div>
 
                   <div> Description:
                     <br>
-                    {{ advertisement.description }}</div>
+                    {{ advertisement.description }}
+                  </div>
                 </v-card-text>
 
                 <v-divider class="mx-4"></v-divider>
 
-                <v-card-title> Contact seller </v-card-title>
-                  <v-card-text>
-                    <v-row
-                        align="center"
-                        class="mx-0"
-                    >
-                    </v-row>
-                    <div class="my-4 subtitle-1">
-                      Name: {{ advertisement.username }}
-                    </div>
+                <v-card-title> Contact seller</v-card-title>
+                <v-card-text>
+                  <v-row
+                      align="center"
+                      class="mx-0"
+                  >
+                  </v-row>
+                  <div class="my-4 subtitle-1">
+                    Name: {{ advertisement.username }}
+                  </div>
 
-                    <div class="my-4 subtitle-1">
-                      Phone number: {{ advertisement.phonenumber }}
-                      <br>
-                      Email: {{ advertisement.email }}
-                    </div>
-                  </v-card-text>
+                  <div class="my-4 subtitle-1">
+                    Phone number: {{ advertisement.phonenumber }}
+                    <br>
+                    Email: {{ advertisement.email }}
+                  </div>
+                </v-card-text>
               </v-card>
-
 
             </v-sheet>
           </v-col>
@@ -80,6 +82,7 @@ export default {
 
       'id': '',
       'title': '',
+      'date': '',
       'description': '',
       'price': '',
       'username': '',
