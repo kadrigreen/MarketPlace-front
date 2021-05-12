@@ -6,6 +6,9 @@ import VueAxios from 'vue-axios'
 import vuetify from './plugins/vuetify'
 
 
+const BASE_URL = 'http://localhost:8080';
+
+
 Vue.use(VueAxios, axios)
 Vue.config.productionTip = false
 
