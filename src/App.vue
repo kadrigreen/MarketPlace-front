@@ -27,11 +27,16 @@
       </v-tabs>
     </v-app-bar>
 
+
+
       <v-main class="grey lighten-3">
       <router-view/>
     </v-main>
+
+
   </v-app>
-</template>
+
+ </template>
 
 <script>
 

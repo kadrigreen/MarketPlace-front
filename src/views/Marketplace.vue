@@ -32,7 +32,7 @@
 
                 <v-img
                     height="250"
-                    src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+                    src=""
                 ></v-img>
 
                 <v-card-title><router-link :to="'/Advertisement/'+input.id">{{ input.title }}</router-link></v-card-title>
