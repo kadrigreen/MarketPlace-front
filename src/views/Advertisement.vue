@@ -20,8 +20,9 @@
 
                 <v-img
                     height="350"
-                    src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+                 v-bind:src="'/api/getPhoto?photoId='+advertisement.id"
                 ></v-img>
+
 
                 <v-card-title>{{ advertisement.title }}</v-card-title>
 
@@ -89,6 +90,8 @@ export default {
       'phonenumber': '',
       'email': '',
       'advertisement': '',
+      'photoId':'',
+      'photo':'',
     }
   },
   methods: {
@@ -99,11 +102,18 @@ export default {
             this.advertisement = response.data
           })
     },
+    /*'getPhoto': function (id){
+      this.$http.get('/api/getPhoto/'+id)
+      .then(response=> {
+        console.log(response);
+        this.photo=response.data
+      })
+    }*/
   },
   mounted() {
     console.log(this.$route.params.id);
     this.getAdvertisement(this.$route.params.id)
-  }
+  },
 }
 
 </script>
