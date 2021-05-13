@@ -36,7 +36,7 @@
                   <div class="my-4 subtitle-1">
                     Time: {{ new Date() }}
                     <br>
-                    Price: {{ advertisement.price }}
+                    Price: {{ advertisement.price }}€
                     <br>
                     Location: {{ advertisement.location }}
                   </div>
