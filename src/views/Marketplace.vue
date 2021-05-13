@@ -32,7 +32,7 @@
 
                 <v-img
                     height="250"
-                    src=""
+                    v-bind:src="'/api/getPhoto?photoId='+input.id"
                 ></v-img>
 
                 <v-card-title><router-link :to="'/Advertisement/'+input.id">{{ input.title }}</router-link></v-card-title>
@@ -175,7 +175,7 @@
 
                 <v-img
                     height="250"
-                    src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+                    v-bind:src="'/api/getPhoto?photoId='+ads.id"
                 ></v-img>
 
                 <v-card-title><router-link :to="'/Advertisement/'+ads.id">{{ ads.title }}</router-link></v-card-title>
@@ -241,6 +241,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data: function () {
     return {
@@ -262,6 +264,8 @@ export default {
 
       sorting: ['', 'Price: lowest first', 'Price: highest first', 'Date added: newest', 'Date added: oldest'],
       'selectedOption': '',
+
+      photoId: [],
 
 
     }
@@ -313,8 +317,16 @@ export default {
             this.inputResponse = response.data
           })
     },
+    'getPhoto': function (){
+         this.$http.get('/api/getPhoto')
+      .then ((response) => {
+      this.photoId = response.data.data;
+      })
+    }
 
-
+  },
+  mounted() {
+    this.getPhoto();
   }
 }
 </script>
