@@ -114,6 +114,30 @@
         </v-row>
       </v-container>
     </v-main>
+
+    <v-footer
+        dark
+        padless
+
+    >
+      <v-card
+          class="flex"
+          flat
+          tile
+      >
+        <v-card-title class="indigo lighten-3">
+          <strong class="subheading">A place, where you can make the best deals!</strong>
+
+        </v-card-title>
+
+        <v-card-text class="py-2 white--text text-center">
+          ©{{ new Date().getFullYear() }} — <strong>Marketplace</strong>
+        </v-card-text>
+      </v-card>
+    </v-footer>
+
+
+
   </v-app>
 </template>
 
