@@ -120,19 +120,19 @@
                   v-model='selectedLocation'>
               </v-select>
               <v-text-field v-model="priceFrom"
-                            label="Price"
+                            label="Price from"
                             placeholder="Insert minimum price"
                             outlined
                             color="#00ACC1"
               ></v-text-field>
               <v-text-field v-model="priceTo"
-                            label="Price"
+                            label="Price to"
                             placeholder="Insert maximum price"
                             outlined
                             color="#00ACC1"
               ></v-text-field>
               <v-text-field v-model="searchText"
-                            label="Text"
+                            label="Search text"
                             placeholder="Insert search text"
                             outlined
                             color="#00ACC1"
