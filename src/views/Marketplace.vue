@@ -13,7 +13,7 @@
                   placeholder="Search ads by keyword here"
                   outlined color="black" background-color="white"
                   v-model='searchedInput'
-                  v-on:change="searchAdsByTitleDescription(); isHidden=true">
+                  v-on:change="searchAdsByTitleDescription(); isHidden1=true">
               </v-text-field>
 
               <!--            Search bar      V-card-->
@@ -82,7 +82,7 @@
       <!--                Search bar-->
 
       <v-container
-          v-if="!isHidden">
+          v-if="!isHidden1">
 
         <h2>
           Advanced search
@@ -143,7 +143,7 @@
 
 
 
-              <v-btn v-on:click="getAdsBySearch" elevation="4" color="#00BCD4" block  > Search</v-btn>
+              <v-btn v-on:click="getAdsBySearch(); isHidden2=true" elevation="4" color="#00BCD4" block  > Search</v-btn>
 
               <!--  -->
             </v-sheet>
@@ -156,6 +156,85 @@
             <v-sheet
                 min-height="55vh"
                 rounded="lg">
+
+              <!--        getAllAdvertisements-->
+              <v-container
+                  v-if="!isHidden2">
+                <v-row>
+                  <v-card
+                      v-for="advertisement in advertisements"
+                      :loading="loading"
+                      class="mx-auto my-12"
+                      max-width="210"
+                  >
+                    <template slot="progress">
+                      <v-progress-linear
+                          color="deep-purple"
+                          height="10"
+                          indeterminate
+                      ></v-progress-linear>
+                    </template>
+
+                    <v-img
+                        height="200"
+                        v-bind:src="'/api/getPhoto?photoId='+advertisement.id"
+                    ></v-img>
+
+                    <v-card-title><router-link :to="'/Advertisement/'+advertisement.id">{{ advertisement.title }}</router-link></v-card-title>
+
+                    <v-card-text>
+                      <v-row
+                          align="center"
+                          class="mx-0"
+                      >
+                      </v-row>
+
+                      <div class="my-4 subtitle-1">
+                        {{ advertisement.price }}€ • {{ advertisement.location }}
+                      </div>
+
+                    </v-card-text>
+
+                    <v-divider class="mx-4"></v-divider>
+
+                    <v-card-actions>
+                      <v-tooltip
+                          v-model="show"
+                          top
+                      >
+                        <template v-slot:activator="{ on, attrs }">
+                          <v-btn
+                              color="deep-purple lighten-2"
+                              v-bind="attrs"
+                              v-on="on"
+                          >
+                            Contact seller
+                          </v-btn>
+                        </template>
+                        <span> Phone: {{ advertisement.phonenumber }}, Email: {{ advertisement.email }} </span>
+                      </v-tooltip>
+                    </v-card-actions>
+
+                  </v-card>
+
+
+                </v-row>
+              </v-container>
+
+              <!--        getAllAdvertisements-->
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -229,69 +308,67 @@
 
 
 <!--        getAllAdvertisements-->
-        <v-container>
-          <v-row>
-        <v-card
-                v-for="advertisement in advertisements"
-                :loading="loading"
-                class="mx-auto my-12"
-                max-width="210"
-        >
-          <template slot="progress">
-            <v-progress-linear
-                color="deep-purple"
-                height="10"
-                indeterminate
-            ></v-progress-linear>
-          </template>
+<!--        <v-container>-->
+<!--          <v-row>-->
+<!--        <v-card-->
+<!--                v-for="advertisement in advertisements"-->
+<!--                :loading="loading"-->
+<!--                class="mx-auto my-12"-->
+<!--                max-width="210"-->
+<!--        >-->
+<!--          <template slot="progress">-->
+<!--            <v-progress-linear-->
+<!--                color="deep-purple"-->
+<!--                height="10"-->
+<!--                indeterminate-->
+<!--            ></v-progress-linear>-->
+<!--          </template>-->
 
-          <v-img
-              height="200"
-              v-bind:src="'/api/getPhoto?photoId='+advertisement.id"
-          ></v-img>
+<!--          <v-img-->
+<!--              height="200"-->
+<!--              v-bind:src="'/api/getPhoto?photoId='+advertisement.id"-->
+<!--          ></v-img>-->
 
-          <v-card-title><router-link :to="'/Advertisement/'+advertisement.id">{{ advertisement.title }}</router-link></v-card-title>
+<!--          <v-card-title><router-link :to="'/Advertisement/'+advertisement.id">{{ advertisement.title }}</router-link></v-card-title>-->
 
-          <v-card-text>
-            <v-row
-                align="center"
-                class="mx-0"
-            >
-            </v-row>
+<!--          <v-card-text>-->
+<!--            <v-row-->
+<!--                align="center"-->
+<!--                class="mx-0"-->
+<!--            >-->
+<!--            </v-row>-->
 
-            <div class="my-4 subtitle-1">
-              {{ advertisement.price }}€ • {{ advertisement.location }}
-            </div>
+<!--            <div class="my-4 subtitle-1">-->
+<!--              {{ advertisement.price }}€ • {{ advertisement.location }}-->
+<!--            </div>-->
 
-          </v-card-text>
+<!--          </v-card-text>-->
 
-          <v-divider class="mx-4"></v-divider>
+<!--          <v-divider class="mx-4"></v-divider>-->
+<!--          -->
+<!--          <v-card-actions>-->
+<!--            <v-tooltip-->
+<!--                v-model="show"-->
+<!--                top-->
+<!--            >-->
+<!--              <template v-slot:activator="{ on, attrs }">-->
+<!--                <v-btn-->
+<!--                    color="deep-purple lighten-2"-->
+<!--                    v-bind="attrs"-->
+<!--                    v-on="on"-->
+<!--                >-->
+<!--                  Contact seller-->
+<!--                </v-btn>-->
+<!--              </template>-->
+<!--              <span> Phone: {{ advertisement.phonenumber }}, Email: {{ advertisement.email }} </span>-->
+<!--            </v-tooltip>-->
+<!--          </v-card-actions>-->
 
-<!--          <v-card-title> Contact: {{ advertisement.username }} </v-card-title>-->
-
-          <v-card-actions>
-            <v-tooltip
-                v-model="show"
-                top
-            >
-              <template v-slot:activator="{ on, attrs }">
-                <v-btn
-                    color="deep-purple lighten-2"
-                    v-bind="attrs"
-                    v-on="on"
-                >
-                  Contact seller
-                </v-btn>
-              </template>
-              <span> Phone: {{ advertisement.phonenumber }}, Email: {{ advertisement.email }} </span>
-            </v-tooltip>
-          </v-card-actions>
-
-        </v-card>
+<!--        </v-card>-->
 
 
-          </v-row>
-        </v-container>
+<!--          </v-row>-->
+<!--        </v-container>-->
 
 <!--        getAllAdvertisements-->
 
@@ -328,7 +405,8 @@ export default {
 
       'searchedInput': '',
       'inputResponse': [],
-      isHidden: false,
+      isHidden1: false,
+      isHidden2: false,
 
       'searchText':'',
 
