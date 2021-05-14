@@ -7,6 +7,7 @@ import Marketplace from "../views/Marketplace.vue"
 import addAdvertisement from "../views/addAdvertisement.vue"
 import Advertisement from "../views/Advertisement.vue"
 
+
 Vue.use(VueRouter)
 
 const routes = [
