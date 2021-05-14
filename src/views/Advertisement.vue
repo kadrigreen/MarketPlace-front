@@ -1,3 +1,5 @@
+
+
 <template>
   <v-app id="inspire">
     <v-main class="grey lighten-3">
@@ -26,23 +28,39 @@
 
                 <v-card-title>{{ advertisement.title }}</v-card-title>
 
+
                 <v-card-text>
+
                   <v-row
                       align="center"
                       class="mx-0"
                   >
                   </v-row>
-
                   <div class="my-4 subtitle-1">
-                    Time: {{ new Date() }}
-                    <br>
-                    Price: {{ advertisement.price }}€
-                    <br>
-                    Location: {{ advertisement.location }}
-                  </div>
 
-                  <div> Description:
-                    <br>
+                    <v-icon
+                      medium
+                      color="grey darken-2">
+                    mdi-cash-multiple
+                  </v-icon> {{ advertisement.price }} €
+                  </div>
+                  <div class="my-4 subtitle-2">
+                    <v-icon
+                        medium
+                        color="grey darken-2">
+                      mdi-clock-time-four-outline
+                    </v-icon> {{ new Date() }}
+                  </div>
+                  <div>
+                    <v-icon
+                        medium
+                        color="grey darken-2">
+                      mdi-map-marker-radius
+                    </v-icon> {{ advertisement.location }}
+                  </div>
+                  <br>
+                  <div class="my-4 subtitle-2"> Description</div>
+                  <div>
                     {{ advertisement.description }}
                   </div>
                 </v-card-text>
@@ -54,16 +72,30 @@
                   <v-row
                       align="center"
                       class="mx-0"
+
                   >
                   </v-row>
                   <div class="my-4 subtitle-1">
-                    Name: {{ advertisement.username }}
+                    <v-icon
+                        medium
+                        color="grey darken-2">
+                      mdi-account
+                    </v-icon>  {{ advertisement.username }}
                   </div>
 
                   <div class="my-4 subtitle-1">
-                    Phone number: {{ advertisement.phonenumber }}
-                    <br>
-                    Email: {{ advertisement.email }}
+                    <v-icon
+                        medium
+                        color="grey darken-2">
+                      mdi-cellphone
+                    </v-icon> +372 {{ advertisement.phonenumber }}
+                  </div>
+                  <div class="my-4 subtitle-1">
+                    <v-icon
+                        medium
+                        color="grey darken-2">
+                      mdi-email
+                    </v-icon> {{ advertisement.email }}
                   </div>
                 </v-card-text>
               </v-card>

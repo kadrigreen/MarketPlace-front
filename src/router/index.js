@@ -8,6 +8,7 @@ import addAdvertisement from "../views/addAdvertisement.vue"
 import Advertisement from "../views/Advertisement.vue"
 import AboutPage from "../views/AboutPage";
 
+
 Vue.use(VueRouter)
 
 const routes = [
