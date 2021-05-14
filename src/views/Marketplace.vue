@@ -11,7 +11,7 @@
               <v-text-field
                   label="Search"
                   placeholder="Search ads by keyword here"
-                  outlined color="black" background-color="white"
+                  outlined color="#00ACC1" background-color="white"
                   v-model='searchedInput'
                   v-on:change="searchAdsByTitleDescription(); isHidden1=true">
               </v-text-field>
@@ -109,28 +109,33 @@
                   label="Select category"
                   height="55"
                   outlined
+                  color="#00ACC1"
                   v-model='selectedCategory'>
               </v-select>
               <v-select
                   :items="locations"
                   label="Select location"
                   outlined
+                  color="#00ACC1"
                   v-model='selectedLocation'>
               </v-select>
               <v-text-field v-model="priceFrom"
                             label="Price"
                             placeholder="Insert minimum price"
                             outlined
+                            color="#00ACC1"
               ></v-text-field>
               <v-text-field v-model="priceTo"
                             label="Price"
                             placeholder="Insert maximum price"
                             outlined
+                            color="#00ACC1"
               ></v-text-field>
               <v-text-field v-model="searchText"
                             label="Text"
                             placeholder="Insert search text"
                             outlined
+                            color="#00ACC1"
               ></v-text-field>
 
 
@@ -138,10 +143,9 @@
                   :items="sorting"
                   label="Sort By"
                   outlined
+                  color="#00ACC1"
                   v-model='selectedOption'>
               </v-select>
-
-
 
               <v-btn v-on:click="getAdsBySearch(); isHidden2=true" elevation="4" color="#00BCD4" block  > Search</v-btn>
 
@@ -225,19 +229,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!--                        5 Search  V-card-->
               <v-card v-for="ads in searchResults"
                   :loading="loading"
@@ -263,6 +254,7 @@
                   <v-row
                       align="center"
                       class="mx-0"
+
                   >
                   </v-row>
 
@@ -306,90 +298,34 @@
         </v-row>
 
 
-
-<!--        getAllAdvertisements-->
-<!--        <v-container>-->
-<!--          <v-row>-->
-<!--        <v-card-->
-<!--                v-for="advertisement in advertisements"-->
-<!--                :loading="loading"-->
-<!--                class="mx-auto my-12"-->
-<!--                max-width="210"-->
-<!--        >-->
-<!--          <template slot="progress">-->
-<!--            <v-progress-linear-->
-<!--                color="deep-purple"-->
-<!--                height="10"-->
-<!--                indeterminate-->
-<!--            ></v-progress-linear>-->
-<!--          </template>-->
-
-<!--          <v-img-->
-<!--              height="200"-->
-<!--              v-bind:src="'/api/getPhoto?photoId='+advertisement.id"-->
-<!--          ></v-img>-->
-
-<!--          <v-card-title><router-link :to="'/Advertisement/'+advertisement.id">{{ advertisement.title }}</router-link></v-card-title>-->
-
-<!--          <v-card-text>-->
-<!--            <v-row-->
-<!--                align="center"-->
-<!--                class="mx-0"-->
-<!--            >-->
-<!--            </v-row>-->
-
-<!--            <div class="my-4 subtitle-1">-->
-<!--              {{ advertisement.price }}€ • {{ advertisement.location }}-->
-<!--            </div>-->
-
-<!--          </v-card-text>-->
-
-<!--          <v-divider class="mx-4"></v-divider>-->
-<!--          -->
-<!--          <v-card-actions>-->
-<!--            <v-tooltip-->
-<!--                v-model="show"-->
-<!--                top-->
-<!--            >-->
-<!--              <template v-slot:activator="{ on, attrs }">-->
-<!--                <v-btn-->
-<!--                    color="deep-purple lighten-2"-->
-<!--                    v-bind="attrs"-->
-<!--                    v-on="on"-->
-<!--                >-->
-<!--                  Contact seller-->
-<!--                </v-btn>-->
-<!--              </template>-->
-<!--              <span> Phone: {{ advertisement.phonenumber }}, Email: {{ advertisement.email }} </span>-->
-<!--            </v-tooltip>-->
-<!--          </v-card-actions>-->
-
-<!--        </v-card>-->
-
-
-<!--          </v-row>-->
-<!--        </v-container>-->
-
-<!--        getAllAdvertisements-->
-
-
       </v-container>
     </v-main>
-    <v-toolbar
-        class="mt-2"
-        color="blue lighten-3"
+
+    <v-footer
         dark
-        flat
+        padless
+
     >
-      <v-toolbar-title class="subheading">
-        A place, where you can make the best deals!
-      </v-toolbar-title>
-    </v-toolbar>
+      <v-card
+          class="flex"
+          flat
+          tile
+      >
+        <v-card-title class="indigo lighten-3">
+          <strong class="subheading">A place, where you can make the best deals!</strong>
+
+        </v-card-title>
+
+        <v-card-text class="py-2 white--text text-center">
+          ©{{ new Date().getFullYear() }} — <strong>Marketplace</strong>
+        </v-card-text>
+      </v-card>
+    </v-footer>
+
   </v-app>
 </template>
 
 <script>
-import axios from "axios";
 
 export default {
   data: function () {
@@ -484,10 +420,6 @@ export default {
 
     this.$http.get('/api/getAllAdvertisements/')
         .then(response => this.advertisements = response.data);
-
-
-
-
 
   }
 }
